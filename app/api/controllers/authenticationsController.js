@@ -1,7 +1,7 @@
-var passport = require("passport");
-var User     = require('../models/user');
-var secret   = require('../config/config').secret 
-var jwt      = require('jsonwebtoken');
+var passport = require("passport"),
+    User     = require('../models/user'),
+    secret   = require('../config/config').secret,
+    jwt      = require('jsonwebtoken');
 
 function register(req, res, next) {
   var localStrategy = passport.authenticate('local-signup', function(err, user, info) {
@@ -22,10 +22,8 @@ function register(req, res, next) {
       user: user
     });
   });
-
   return localStrategy(req, res, next);
 };
-
 
 function login(req, res, next) {
   User.findOne({

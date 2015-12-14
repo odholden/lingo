@@ -12,7 +12,6 @@ var express        = require("express"),
     cors           = require("cors");
 
 var port   = process.env.PORT || 3000,
-    router = express.Router(),
     app    = express();
 
 var config  = require("./config/config"),
@@ -49,15 +48,13 @@ app.use('/api', expressJWT({ secret: secret })
   })
 );
 
+var routes = require("./config/routes");
+app.use("/api", routes);
+
 app.use(function(req, res, next){
   global.currentUser = req.user;
   next();
 })
-
-app.use("/", router);
-
-var routes = require("./config/routes");
-app.use("/api", routes);
 
 app.listen(3000);
 console.log("hearing ya loud");
