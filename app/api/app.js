@@ -40,7 +40,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); 
 app.use(cors());
 app.use(passport.initialize());
-app.use(passport.session()); 
 
 app.use('/api', expressJWT({ secret: secret })
   .unless({
@@ -51,14 +50,15 @@ app.use('/api', expressJWT({ secret: secret })
   })
 );
 
-var routes = require("./config/routes");
-app.use("/api", routes);
-
-app.use(function(req, res, next){
-  global.currentUser = req.user;
-  console.log(req.user.username + " is the current user");
+app.use(function (err, req, res, next) {
+  if (err.name === 'UnauthorizedError') {
+    return res.status(401).json({message: 'Unauthorized request.'});
+  }
   next();
-})
+});
+
+var routes = require('./config/routes');
+app.use("/api", routes);
 
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){

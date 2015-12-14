@@ -1,7 +1,7 @@
 angular
   .module("lingo", ["ngResource", "satellizer", "angular-jwt", "ui.router"])
   .constant("API", "http://localhost:3000/api")
-  .config(mainRouter)
+  .config(MainRouter)
   .config(function($httpProvider){
     $httpProvider.interceptors.push('authInterceptor')
   })
@@ -15,27 +15,27 @@ angular
     $stateProvider
       .state('login', {
         url: "/login",
-        templateUrl: "login.html"
+        templateUrl: "views/login.html"
       })
       .state('register', {
         url: "/register",
-        templateUrl: "register.html"
+        templateUrl: "views/register.html"
       })
       .state('home', {
         url: "/",
-        templateUrl: "home.html",
+        templateUrl: "views/home.html",
       })
       .state('chat', {
         url: "/chat",
-        templateUrl: "chat.html",
+        templateUrl: "views/chat.html",
       })
       .state('new', {
         url: "/new",
-        templateUrl: "new.html",
+        templateUrl: "views/new.html",
       })
       .state('profile', {
         url: "/profile",
-        templateUrl: "profile.html",
+        templateUrl: "views/profile.html",
       })
 
     $urlRouterProvider.otherwise("/");

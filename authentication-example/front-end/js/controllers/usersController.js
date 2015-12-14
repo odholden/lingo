@@ -1,14 +1,15 @@
 angular
-  .module('lingo')
-  .controller('MainController', MainController);
+  .module('logging')
+  .controller('UsersController', UsersController);
 
-MainController.$inject = ['User', 'TokenService', '$state', 'CurrentUser', '$auth'];
-function MainController(User, TokenService, $state, CurrentUser, $auth){
+UsersController.$inject = ['User', 'TokenService', '$state', 'CurrentUser', '$auth'];
+function UsersController(User, TokenService, $state, CurrentUser, $auth){
 
   var self = this;
 
   self.all           = [];
   self.user          = {};
+  self.getUsers      = getUsers;
   self.register      = register;
   self.login         = login;
   self.logout        = logout;
@@ -18,10 +19,18 @@ function MainController(User, TokenService, $state, CurrentUser, $auth){
     $auth.authenticate(provider);
   };
 
+  // GETs all the users from the api
+  function getUsers() {
+    User.query(function(data){
+     return self.all = data.users;
+   });
+  }
+
   // Actions to carry once register or login forms have been submitted
   function handleLogin(res) {
     var token = res.token ? res.token : null;
     if (token) {
+      self.getUsers();
       $state.go('home');
     }
     // console.log(res);
@@ -52,5 +61,13 @@ function MainController(User, TokenService, $state, CurrentUser, $auth){
     var loggedIn = !!TokenService.getToken();
     return loggedIn;
   }
-  return self;
+
+  // Checks if the user is logged in, runs every time the page is loaded
+  if (CurrentUser.getUser()) {
+    self.getUsers();
+    // self.user = TokenService.decodeToken();
+    // console.log(self.user);
+  }
+
+return self
 }

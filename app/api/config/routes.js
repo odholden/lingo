@@ -9,11 +9,9 @@ var authenticationsController = require('../controllers/authenticationsControlle
 
 // AUTHENTICATION ROUTES
 
-router.route('/login')
-  .post(authenticationsController.login);
+router.post('/login', authenticationsController.login);
+router.post('/register', authenticationsController.register);
 
-router.route('/register')
-  .post(authenticationsController.register);
 
 
 

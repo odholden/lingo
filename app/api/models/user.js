@@ -3,10 +3,12 @@ var bcrypt   = require("bcrypt-nodejs");
 var Language = require("../models/language");
 
 var userSchema = new mongoose.Schema({
-  username:  { type: String, unique: true, required: true },
-  image:     { type: String },
-  email:     { type: String, unique: true, required: true },
-  password:  { type: String, required: true },
+  local: {
+    username:  { type: String, unique: true, required: true },
+    image:     { type: String },
+    email:     { type: String, unique: true, required: true },
+    password:  { type: String, required: true }
+  },
   chats:     [ { type: mongoose.Schema.ObjectId, ref: 'Chat'} ],
   languages: [Language.schema]
 })
