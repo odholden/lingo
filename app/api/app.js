@@ -11,8 +11,11 @@ var express        = require("express"),
     path           = require("path"),
     cors           = require("cors");
 
-var port   = process.env.PORT || 3000,
-    app    = express();
+var http           = require("http"),   
+    server         = http.createServer(app),
+    io             = require('socket.io'),
+    io             = io.listen(server),
+    app            = express();
 
 var config  = require("./config/config"),
     secret  = require("./config/config").secret,
@@ -53,9 +56,16 @@ app.use("/api", routes);
 
 app.use(function(req, res, next){
   global.currentUser = req.user;
+  console.log(req.user.username + " is the current user");
   next();
 })
 
-app.listen(3000);
+io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg);
+  });
+});
+
+server.listen(3000);
 console.log("hearing ya loud");
  
