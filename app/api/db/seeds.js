@@ -24,4 +24,8 @@ for (var code in codes) {
   })
 }
 
+var chat1 = new Chat({
+  
+})
+
 
