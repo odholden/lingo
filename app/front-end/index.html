@@ -19,23 +19,13 @@
   <script type="text/javascript" src="./js/controllers/mainController.js"></script>
 <!-- Stylesheets -->
   <link rel="stylesheet" type="text/css" href="./css/reset.css">
-  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
   <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,300,200,600,500' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body ng-controller="MainController as main">
   <header>
     <nav>
-      <div class="pure-menu pure-menu-horizontal">
-        <a href="#" class="pure-menu-heading pure-menu-link" ui-sref-active="active" ui-sref="home"><h1>LINGO</h1></a>
-        <ul class="pure-menu-list">
-          <li ng-hide="main.checkLoggedIn()"class="pure-menu-item"><a href="#" class="pure-menu-link" ui-sref-active="active" ui-sref="login">Login</a></li>
-          <li ng-hide="main.checkLoggedIn()" class="pure-menu-item"><a href="#" class="pure-menu-link" ui-sref-active="active" ui-sref="register">Register</a></li>
-          <li ng-show="main.checkLoggedIn()" class="pure-menu-item"><a href="#" class="pure-menu-link" ui-sref-active="active" ui-sref="profile">My Profile</a></li>
-          <li ng-show="main.checkLoggedIn()" class="pure-menu-item"><a href="#" class="pure-menu-link" ui-sref="home" ng-click="main.logout()">Logout</a></li>
-        </ul>
-      </div>
+
     </nav>
   </header>
 
