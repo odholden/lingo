@@ -4,7 +4,8 @@ var express           = require('express'),
 
 var authenticationsController = require('../controllers/authenticationsController'),
     chatsController           = require('../controllers/chatsController'),
-    usersController           = require('../controllers/usersController');
+    usersController           = require('../controllers/usersController'),
+    languagesController       = require('../controllers/languagesController');
 
 
 // AUTHENTICATION ROUTES
@@ -12,20 +13,28 @@ var authenticationsController = require('../controllers/authenticationsControlle
 router.post('/login', authenticationsController.login);
 router.post('/register', authenticationsController.register);
 
+router.route('/users')
+  .get(usersController.usersIndex)
+
+router.route('/users/:id')
+  .get(usersController.usersShow)
+  .put(usersController.addChatToUser)
 
 
 
-// CHAT ROUTES
+router.route('/languages')
+  .get(languagesController.languagesIndex)
 
-// router.route('/').get(chatsController.chatsIndex)
+router.route('/languages/:name')
+  .get(languagesController.languagesShow)
 
-// router.route('/chats')
-//   .get(chatsController.chatsIndex)
-//   .post(chatsController.chatsCreate);
+
+router.route('/chats')
+  .get(chatsController.chatsIndex)
 
 router.route('/chats/:id')
   .get(chatsController.chatsShow)
-  // .delete(chatsController.chatsDelete);
+
 
 
 module.exports = router;

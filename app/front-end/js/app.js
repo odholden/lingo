@@ -37,6 +37,10 @@ angular
         url: "/profile",
         templateUrl: "views/profile.html",
       })
+      .state('invites', {
+        url: "/invites",
+        templateUrl: "views/invites.html",
+      })
 
     $urlRouterProvider.otherwise("/");
   }

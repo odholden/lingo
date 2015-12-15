@@ -61,10 +61,11 @@ var routes = require('./config/routes');
 app.use("/api", routes);
 
 io.on('connection', function(socket){
+  console.log("socket connected");
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
   });
 });
 
-server.listen(3000);
+app.listen(3000);
 console.log("hearing ya loud");
