@@ -4,9 +4,9 @@ var Language = require("../models/language");
 
 var userSchema = new mongoose.Schema({
   local: {
-    username:  { type: String, unique: true, required: true },
+    username:  { type: String },
     image:     { type: String },
-    email:     { type: String, unique: true, required: true },
+    email:     { type: String },
     password:  { type: String, required: true }
   },
   chats:     [ { type: mongoose.Schema.ObjectId, ref: 'Chat'} ],
@@ -18,7 +18,7 @@ userSchema.statics.encrypt = function(password) {
 };
 
 userSchema.methods.validPassword = function(password) {
-  return bcrypt.compareSync(password, this.password);
+  return bcrypt.compareSync(password, this.local.password);
 }
 
 module.exports = mongoose.model('User', userSchema);
