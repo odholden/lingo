@@ -4,7 +4,7 @@ var Message  = require('../models/message');
 
 var chatSchema = new mongoose.Schema({
   users    : [{ type: mongoose.Schema.ObjectId, ref: 'User'}],
-  messages : [{ type: mongoose.Schema.ObjectId, ref: 'Message'}]
+  messages : [Message.schema]
 })
 
 module.exports = mongoose.model('Chat', chatSchema);

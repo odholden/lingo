@@ -1,4 +1,5 @@
-var User   = require('../models/user');
+var User   = require('../models/user'),
+    Chat   = require('../models/chat');
 
 function usersIndex(req, res) {
   User.find(function(err, users){
@@ -8,30 +9,27 @@ function usersIndex(req, res) {
 }
 
 function usersShow(req, res){
-  User.findById(req.params.id, function(err, user){
+  User.findById(req.params.id).populate("chats").exec(function(err, user){
     if (err) return res.status(404).json({message: 'Something went wrong.'});
     res.status(200).json({ user: user });
   });
 }
 
 
-function addChatToUser(req, res) {
-  var chat = req.body.chat;
-  var id   = req.params.id;
-  console.log(chat);
-  console.log(id);
-
-  User.findById({_id: id}, function(err, user) {
-    console.log(user);
+function usersUpdate(req, res){
+  User.findById(req.params.id, function(err, user) {
     if (err) return res.status(500).json({message: "Something went wrong!"});
     if (!user) return res.status(404).json({message: 'No user found.'});
-    if (chat) user.chats.push();
+
+    if (req.body.email) user.local.email = req.body.name;
+    if (req.body.password) user.local.password = req.body.password;
 
     user.save(function(err) {
-      if (err) return res.status(500).json({message: "Something went wrong!"});
+     if (err) return res.status(500).json({message: "Something went wrong!"});
+
       res.status(201).json({message: 'User successfully updated.', user: user});
-    })
-  })
+    });
+  });
 }
 
 function usersDelete(req, res){
@@ -45,5 +43,5 @@ module.exports = {
   usersIndex:  usersIndex,
   usersShow:   usersShow,
   usersDelete: usersDelete,
-  addChatToUser: addChatToUser
+  usersUpdate: usersUpdate
 }
