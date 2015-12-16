@@ -26,7 +26,7 @@ angular
         templateUrl: "views/home.html",
       })
       .state('chat', {
-        url: "/chat/:id",
+        url: "/chat",
         templateUrl: "views/chat.html",
       })
       .state('new', {

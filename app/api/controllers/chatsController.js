@@ -43,6 +43,9 @@ function chatsAddMessage(req, res) {
   var id = req.params.id;
   console.log(req.body);
   Chat.findByIdAndUpdate({ _id: id}, function(err, chat) {
+
+    
+
     if (err) return res.status(500).json(err);
     if (!chat) return res.status(404).json(err);
   })

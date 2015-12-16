@@ -10,7 +10,7 @@ function ChatsController(User, Chat, TokenService, $state, CurrentUser, socket) 
 
   self.all     = [];
   self.users   = [];
-  self.user    = CurrentUser.getUser;
+  self.user    = CurrentUser.getUser();
   self.invites = [];
   self.message;
 
