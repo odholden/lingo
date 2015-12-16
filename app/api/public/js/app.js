@@ -29,6 +29,9 @@ angular
       .state('chat', {
         url: "/chat",
         templateUrl: "views/chat.html",
+        params: { 
+          chat: {}
+        }
       })
       .state('new', {
         url: "/new",

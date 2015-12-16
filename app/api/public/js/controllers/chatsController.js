@@ -2,9 +2,9 @@ angular
   .module("lingo")
   .controller("ChatsController", ChatsController);
 
-ChatsController.$inject = ['User', 'Chat', 'TokenService', '$state', 'CurrentUser', 'socket'];
+ChatsController.$inject = ['User', 'Chat', 'TokenService', '$state', "$stateParams", 'CurrentUser', 'socket'];
 
-function ChatsController(User, Chat, TokenService, $state, CurrentUser, socket) {
+function ChatsController(User, Chat, TokenService, $state, $stateParams, CurrentUser, socket) {
 
   var self = this;
 
@@ -12,8 +12,8 @@ function ChatsController(User, Chat, TokenService, $state, CurrentUser, socket) 
   self.users   = [];
   self.user    = CurrentUser.getUser();
   self.invites = [];
-  self.chat    = {};
-  self.message = {};
+  self.chat    = self.chat || {};
+  self.messageText = "";
 
   self.getChats = function() {
     Chat.query(function(data) {
@@ -22,17 +22,16 @@ function ChatsController(User, Chat, TokenService, $state, CurrentUser, socket) 
     })
   }
 
-  self.showChat = function(id) {
-    Chat.get({id: id}, function(chat) {
-      self.chat = chat;
-    });
+  self.showChat = function(chat) {
+    $state.go('chat', { chat: chat });  
+    self.chat = chat;  
+    console.log(self.chat.messages);
   }
 
   self.sendMessage = function(text) {
-    console.log(text);
+    self.messageText = text;
+    self.chat = $stateParams.chat;
     self.user = TokenService.decodeToken();
-    console.log(self.chat);
-
     data = {
       message: 
         {
@@ -43,9 +42,8 @@ function ChatsController(User, Chat, TokenService, $state, CurrentUser, socket) 
     }
 
     Chat.update({ id: self.chat._id }, data, function(message) {
-      console.log("callback happening");
-      self.message = "";
-      $('#messages').append("<p>"+ message +"</p>")
+      $('#messages').append("<li>"+ self.messageText +"</li>")
+      self.messageText = "";
     })
   }
 

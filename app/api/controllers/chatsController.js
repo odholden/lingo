@@ -39,10 +39,12 @@ function chatsIndex(req, res) {
 
 function chatsAddMessage(req, res) {
   var id      = req.params.id;
-  var message = req.body;
-  Chat.findByIdAndUpdate({ _id: id}, {$push: {"messages": req.body }}, function(err, chat) {
+  var message = req.body.message;
+  Chat.findByIdAndUpdate({ _id: id}, {$push: {"messages": req.body.message }}, function(err, chat) {
     if (err) return res.status(500).json(err);
     if (!chat) return res.status(404).json(err);
+    console.log(chat);
+    res.status(200).json({chat});
   })
 }
 

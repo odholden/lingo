@@ -1,10 +1,10 @@
 <section id="chat" ng-controller="ChatsController as chats">
   <body>
     <ul id="messages">
-      <li ng-repeat="message in chats.chat.messages">{{ chat }}{{message.text}}</li>
+      <li ng-repeat="message in chats.chat.messages">{{ message.text }}</li>
     </ul>
-    <form ng-submit="chats.sendMessage(chats.message)">
-      <input id="m" autocomplete="off" ng-model="chats.message" /><button>Send</button>
+    <form ng-submit="chats.sendMessage(chats.messageText)">
+      <input id="m" autocomplete="off" ng-model="chats.messageText" /><button>Send</button>
     </form>
   </body>
 </section>
