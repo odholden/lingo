@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="lingo">
   <!-- External Files -->
-  <script src="/bower_components/socket.io-client/socket.io.js"></script>
+  <script src="socket.io/socket.io.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-messages.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
@@ -15,24 +15,12 @@
   <script type="text/javascript" src="./js/services/tokenService.js"></script>
   <script type="text/javascript" src="./js/services/authInterceptor.js"></script>
   <script type="text/javascript" src="./js/services/currentUser.js"></script>
+  <script type="text/javascript" src="./js/services/socketFactory.js"></script>
   <script type="text/javascript" src="./js/models/user.js"></script>
   <script type="text/javascript" src="./js/models/chat.js"></script>
-  <script type="text/javascript" src="./js/controllers/mainController.js"></script>
-<!-- Sockets -->
-   <script>
-  //   var socket = io.connect("http://localhost:3000");
-  //   $('form').submit(function(){
-  //     console.log("message sent")
-  //     socket.emit('chat message', $('#m').val());
-  //     $('#m').val('');
-  //     return false;
-  //   });
-  //   socket.on('chat message', function(msg){
-  //     $('#messages').append($('<li>').text(msg));
-  //   });
-  // </script>
+  <script type="text/javascript" src="./js/controllers/usersController.js"></script>
+  <script type="text/javascript" src="./js/controllers/chatsController.js"></script>
 <!-- Stylesheets -->
-  <link rel="stylesheet" type="text/css" href="./css/reset.css">
   <link rel="stylesheet" type="text/css" href="./css/materialize.css">
   <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,300,200,600,500' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="./css/style.css">
@@ -46,9 +34,9 @@
           <i class="material-icons">menu</i>
         </a>
         <ul class="right hide-on-med-and-down">
-          <li ng-hide="users.checkLoggedIn()" ui-sref="login">Login</li>
-          <li ng-hide="users.checkLoggedIn()" ui-sref="register">Register</li>
-          <li ng-show="users.checkLoggedIn()" ng-click="users.logout()" >Logout</li>
+          <li ng-hide="users.checkLoggedIn()" ui-sref="login">//Login </li>
+          <li ng-hide="users.checkLoggedIn()" ui-sref="register">//Register </li>
+          <li ng-show="users.checkLoggedIn()" ng-click="users.logout()" >//Logout </li>
         </ul>
         <ul class="side-nav" id="mobile-demo">
           <li ng-hide="users.checkLoggedIn()" ui-sref="login">Login</li>

@@ -10,7 +10,6 @@ var User     = require("../models/user"),
 
 
 var yandex       = require("../config/yandex-languages.js"),
-    translations = yandex.dirs,
     codes        = yandex.langs;
 
 for (var code in codes) {
@@ -79,5 +78,26 @@ chat1.save(function(err, chat) {
   if (err) return console.log(err);
   console.log("Poll saved! ", chat);
 })
+
+var chat2 = new Chat({
+  users:  [user1],
+  messages: [message1, message2]
+})
+
+chat2.save(function(err, chat) {
+  if (err) return console.log(err);
+  console.log("Poll saved! ", chat);
+})
+
+var chat3 = new Chat({
+  users:  [user2],
+  messages: [message1, message2]
+})
+
+chat3.save(function(err, chat) {
+  if (err) return console.log(err);
+  console.log("Poll saved! ", chat);
+})
+
 
 

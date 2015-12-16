@@ -30,10 +30,12 @@ function UsersController(User, TokenService, $state, CurrentUser, $auth){
   }
 
   function register() {
+    console.log("registering user");
     User.register(self.user, handleLogin);
   }
 
   function login() {
+    console.log("logging in");
     User.login(self.user, handleLogin);
   }
 

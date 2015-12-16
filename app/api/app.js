@@ -9,13 +9,14 @@ var express        = require("express"),
     jwt            = require("jsonwebtoken"),
     expressJWT     = require("express-jwt"),
     path           = require("path"),
-    cors           = require("cors");
+    cors           = require("cors"),
+    app            = express();
+
 
 var http           = require("http"),   
     server         = http.createServer(app),
-    io             = require('socket.io'),
-    io             = io.listen(server),
-    app            = express();
+    port           = process.env.PORT || 3000;
+
 
 var config  = require("./config/config"),
     secret  = require("./config/config").secret,
@@ -60,12 +61,21 @@ app.use(function (err, req, res, next) {
 var routes = require('./config/routes');
 app.use("/api", routes);
 
-io.on('connection', function(socket){
+app.use(express.static(__dirname + '/public'));
+
+app.get("/", function(req, res) {
+  res.sendFile(path.join(__dirname + "/index.html"));
+})
+
+server.listen(port);
+console.log('Server started on ' + port);
+
+var io = require('socket.io')(server);
+
+io.on('connect', function(socket){
   console.log("socket connected");
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+  socket.on('chat message', function(data){
+    console.log(data);
+    socket.emit('chat message', data);
   });
 });
-
-app.listen(3000);
-console.log("hearing ya loud");

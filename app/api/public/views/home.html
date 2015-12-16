@@ -1,9 +1,9 @@
 <section id="home" ng-controller="ChatsController as chats">
   <h2>Chats</h2>
   <ul class="collection">
-    <li class="collection-item avatar" ng-repeat="chat in chats.user.chats">
+    <li class="collection-item avatar" ng-repeat="chat in chats.all.chats">
       <i class="material-icons circle blue"></i>
-      <span class="title">{{ chat.user.username }}</span>
+      <span class="title" ng-click="chats.showChat(chat._id)">{{ chat.users[0].local.username}} {{ chat.users[1].local.username}}</span>
       <p> {{ chat.languages[0] }} <br>
           {{ chat.languages[1] }}
       </p>

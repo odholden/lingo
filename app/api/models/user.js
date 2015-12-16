@@ -10,7 +10,7 @@ var userSchema = new mongoose.Schema({
     password:  { type: String, required: true }
   },
   chats:     [ { type: mongoose.Schema.ObjectId, ref: 'Chat'} ],
-  languages: [ { type: mongoose.Schema.ObjectId, ref: 'Language'} ]
+  language:  [Language.schema]
 })
 
 userSchema.statics.encrypt = function(password) {

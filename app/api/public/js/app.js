@@ -6,7 +6,7 @@ angular
     $httpProvider.interceptors.push('authInterceptor')
   })
   .config(function($authProvider) {
-    $authProvider.facebook({ clientId: '1509333952694245'})
+    $authProvider.facebook({ clientId: '1535877196647406'})
   });
 
   MainRouter.$inject = ['$stateProvider', '$urlRouterProvider'];
@@ -26,7 +26,7 @@ angular
         templateUrl: "views/home.html",
       })
       .state('chat', {
-        url: "/chat",
+        url: "/chat/:id",
         templateUrl: "views/chat.html",
       })
       .state('new', {

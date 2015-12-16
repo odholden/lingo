@@ -23,6 +23,7 @@ function usersUpdate(req, res){
 
     if (req.body.email) user.local.email = req.body.name;
     if (req.body.password) user.local.password = req.body.password;
+    if (req.body.language) user.language = req.body.language;
 
     user.save(function(err) {
      if (err) return res.status(500).json({message: "Something went wrong!"});
