@@ -1,6 +1,7 @@
 angular
   .module("lingo", ["ngResource", "satellizer", "angular-jwt", "ui.router"])
   .constant("API", "http://localhost:3000/api")
+  .constant("yandex", "trnsl.1.1.20151211T162251Z.9ffe37b3cd263001.641f229223c0bfc8ab6c06937432b6758191ce8b")
   .config(MainRouter)
   .config(function($httpProvider){
     $httpProvider.interceptors.push('authInterceptor')

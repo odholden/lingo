@@ -12,7 +12,8 @@ function ChatsController(User, Chat, TokenService, $state, CurrentUser, socket) 
   self.users   = [];
   self.user    = CurrentUser.getUser();
   self.invites = [];
-  self.message;
+  self.chat    = {};
+  self.message = {};
 
   self.getChats = function() {
     Chat.query(function(data) {
@@ -24,20 +25,25 @@ function ChatsController(User, Chat, TokenService, $state, CurrentUser, socket) 
   self.showChat = function(id) {
     Chat.get({id: id}, function(chat) {
       self.chat = chat;
-      console.log(chat);
     });
   }
 
-  self.sendMessage = function(message) {
-    console.log(message);
-    console.log(self.user);
+  self.sendMessage = function(text) {
+    console.log(text);
+    self.user = TokenService.decodeToken();
+    console.log(self.chat);
 
     data = {
-      text: message,
-      user: self.user
+      message: 
+        {
+          text: text,
+          user: self.user
+        },
+      chat: self.chat
     }
 
-    Chat.update({ id: self.user._id }, data, function(message) {
+    Chat.update({ id: self.chat._id }, data, function(message) {
+      console.log("callback happening");
       self.message = "";
       $('#messages').append("<p>"+ message +"</p>")
     })
@@ -47,11 +53,11 @@ function ChatsController(User, Chat, TokenService, $state, CurrentUser, socket) 
     console.log("connected")
   })
 
-  self.getInvites = function(chats) {
-    console.log(self.all);
-  }
+  // self.getInvites = function(chats) {
+  //   console.log(self.all);
+  // }
 
   self.getChats();
-  self.getInvites(self.all);
+  // self.getInvites(self.all);
 
 }
