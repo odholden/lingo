@@ -1,17 +1,21 @@
 html {
   font-family: "helvetica neue";
+  text-rendering: optimizeLegibility;
+
 }
 
 body {
   max-width: 960px;
   margin: 0 auto;
-  background-color: #0097A7;
-  color: white;
+  background-color: white;
+  color: black;
   position: relative;
 }
 
-h1, h2, h3, h4, h5 {
-  color: white
+#login, #register {
+  background-color: #0097A7;
+  width: 100vw;
+  height: 100vh
 }
 
 h1 {
@@ -20,42 +24,82 @@ h1 {
   position: absolute;
   top: 7.5vh;
   left: 7.5vw;
+  color: white;
 }
 
-form {
+h2 {
+  background-color: #0097A7;
+  color: white;
+  padding: 10px 0;
+  margin: 0;
+  text-align: center;
+  letter-spacing: -1px;
+  font-size: 40px
+}
+
+#login h2, #register h2 {
+  text-align: center;
+  letter-spacing: -2px;
+  background-color: #0097A7;
+  padding: 20px 0;
+  margin-top: 0;
+
+}
+
+#login form {
   width: 100%;
   height: 250px;
   top: 32vh;
   position: absolute;
 }
 
-form input, .ng-message-error p {
+#register form {
+  position: absolute;
+  width: 100%;
+  top: 28vh;
+}
+
+#login form input, #register form input, #login.ng-message-error p, #register.ng-message-error p {
   width: 50vw;
-  margin: 30px 25vw 0 25vw;
+  margin: 10px 25vw 0 25vw;
   background: transparent;
   border: none;
   border-bottom: 2px solid white;
-  font-family: "Slackey";
   color: white;
   font-size: 20px;
+  letter-spacing: -1px;
 }
 
-.ng-message-error p {
+#login.ng-message-error p, #register.ng-message-error p {
   width: 100vw;
   border: none;
   margin: 10px 20vw 0 20vw;
 }
 
-button {
+#login button, #register button {
   width: 26vw;
   height: 26vw;
   margin: 30px 37vw 0 37vw;
-  background: transparent;
-  border: 5px solid white;
   border-radius: 50%;
-  font-family: "Slackey";
   font-size: 26px;
+  letter-spacing: -1px;
+  font-weight: bold;
+  background: white;
+  border: 2px solid #0097A7;
+  color: #0097A7;
+}
 
+#login button:hover, #register button:hover {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+
+}
+
+#register button {
+  width: 30vw;
+  height: 30vw;
+  margin: 30px 35vw 0 35vw;
 }
 
 ::-webkit-input-placeholder {
@@ -64,7 +108,7 @@ button {
 }
 
 .navbar-default {
-  background-color: transparent;
+  background-color: #0097A7;
   box-shadow: none;
   border-top: 5px solid white;
 }
@@ -74,5 +118,7 @@ button {
 }
 
 .container h2 {
-  margin: 20px;
+  margin:10px 20px;
+  color: white;
+  padding: 0;
 }

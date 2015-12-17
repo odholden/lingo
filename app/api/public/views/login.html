@@ -2,19 +2,19 @@
 <section id="login" ng-controller="UsersController as users">
       <form name="users.loginForm" ng-submit="users.login()" novalidate>
 
-          <input type="text" name="email" placeholder="Email" ng-model="users.user.email" required>
+          <input type="text" name="email" placeholder="email" ng-model="users.user.email" required>
 
         <div class="ng-message-error" ng-messages="users.loginForm['email'].$error" ng-show="(users.loginForm.$submitted && users.loginForm['email'].$invalid)">
           <p ng-message="required">Username needed!</p>
         </div>
 
-          <input type="password" name="password" placeholder="PassWord" ng-model="users.user.password" required>
+          <input type="password" name="password" placeholder="password" ng-model="users.user.password" required>
 
         <div class="ng-message-error" ng-messages="users.loginForm['password'].$error" ng-show="(users.loginForm.$submitted && users.loginForm['password'].$invalid)">
           <p ng-message="required">Password needed!</p>
         </div>
 
-          <button type="submit">Login</button>
+          <button type="submit" ui-sref="home">Login</button>
 
       </form>
       <h1>Lingo!</h1>
