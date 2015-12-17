@@ -74,8 +74,8 @@ var io = require('socket.io')(server);
 
 io.on('connect', function(socket){
   console.log("socket connected");
-  socket.on('chat message', function(data){
-    console.log(data);
-    socket.emit('chat message', data);
+  socket.on('chat message', function(msg){
+    console.log(msg);
+    socket.emit('chat message', msg);
   });
 });
