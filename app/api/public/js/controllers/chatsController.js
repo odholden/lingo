@@ -16,16 +16,26 @@ function ChatsController(User, Chat, TokenService, $state, $stateParams, Current
   self.messageText = "";
 
   self.getChats = function() {
-    Chat.query(function(data) {
-      console.log(data);
-      return self.all = data;
+    Chat.query(function(chats) {
+      return self.all = chats;
     })
+  }
+
+  self.getInvites = function(chats) {
+    Chat.query(function(chats) {
+      for (var i = 0; i < chats.length; i++) {
+        if (chats[i].users.length = 1) {
+          self.invites.push(chats[i]);
+        }
+      }
+    console.log(self.invites);
+    })
+  console.log(self.invites);
   }
 
   self.showChat = function(chat) {
     $state.go('chat', { chat: chat });  
     self.chat = chat;  
-    console.log(self.chat.messages);
   }
 
   self.sendMessage = function(text) {
@@ -42,7 +52,9 @@ function ChatsController(User, Chat, TokenService, $state, $stateParams, Current
     }
 
     Chat.update({ id: self.chat._id }, data, function(message) {
-      $('#messages').append("<li>"+ self.messageText +"</li>")
+      $('#messages').append("<li>"+ self.messageText +"</li>");
+      socket.emit('chat message', self.messageText);
+      console.log("message sent");
       self.messageText = "";
     })
   }
@@ -51,11 +63,13 @@ function ChatsController(User, Chat, TokenService, $state, $stateParams, Current
     console.log("connected")
   })
 
-  // self.getInvites = function(chats) {
-  //   console.log(self.all);
-  // }
+  socket.on('chat message', function(msg){
+    $('#messages').append($('<li>').text(msg));
+  });
+
+
 
   self.getChats();
-  // self.getInvites(self.all);
+  self.getInvites();
 
 }

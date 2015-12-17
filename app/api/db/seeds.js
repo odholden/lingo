@@ -23,12 +23,63 @@ for (var code in codes) {
   })
 }
 
+var language1 = new Language({
+  name: "German",
+  code: "de"
+})
+
+language1.save(function(err, language) {
+  if (err) return console.log(err);
+  console.log("language saved: " + language);
+})
+
+var language2 = new Language({
+  name: "French",
+  code: "fr"
+})
+
+language2.save(function(err, language) {
+  if (err) return console.log(err);
+  console.log("language saved: " + language);
+})
+
+var language3 = new Language({
+  name: "English",
+  code: "en"
+})
+
+language3.save(function(err, language) {
+  if (err) return console.log(err);
+  console.log("language saved: " + language);
+})
+
+var language4 = new Language({
+  name: "Spanish",
+  code: "es"
+})
+
+language4.save(function(err, language) {
+  if (err) return console.log(err);
+  console.log("language saved: " + language);
+})
+
+var language5 = new Language({
+  name: "Korean",
+  code: "ko"
+})
+
+language5.save(function(err, language) {
+  if (err) return console.log(err);
+  console.log("language saved: " + language);
+})
+
 var user1 = new User({ 
   local: {
     username:     "ollie",
     email:        "ollie@ollie.com",
     password:     "password"
-  }
+  },
+  languages: [language3, language1]
 })
 
 user1.save(function(err, user) {
@@ -41,7 +92,8 @@ var user2 = new User({
     username:     "ben",
     email:        "ben@ben.com",
     password:     "password"
-  }
+  },
+  languages: [language1, language3]
 })
 
 user2.save(function(err, user) {

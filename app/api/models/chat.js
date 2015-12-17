@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');
-var Language = require('../models/language');
+var User = require('../models/user');
 var Message  = require('../models/message');
 
 var chatSchema = new mongoose.Schema({
-  users    : [{ type: mongoose.Schema.ObjectId, ref: 'User'}],
+  users    : [User.schema],
   messages : [Message.schema]
 })
 

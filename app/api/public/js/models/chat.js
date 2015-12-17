@@ -5,7 +5,6 @@ angular
 Chat.$inject = ['$resource', 'API']
 
 function Chat($resource, API){
-  console.log("linking with chat model")
   return $resource(
     API + '/chats/:id', {id: '@id'},
     { 'get':       { method: 'GET' },
