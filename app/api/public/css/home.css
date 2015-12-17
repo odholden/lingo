@@ -1,7 +1,47 @@
-.panel {
-  margin: 20px 20px 0 20px;
+#home {
+  background-color: white;
+  height: 100vh;
+  width: 100vw;
+  z-index: -2;
+}
+
+
+.thumbnail {
+  width: 46vw;
+  height: 46vw;
   border-radius: 0;
   border: 2px solid #0097A7;
+  display: inline-block;
+  position: relative;
+  margin: 2vw;
+  background: none;
+  overflow: hidden;
+}
+
+.thumbnail img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.thumbnail .caption {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  height: 70px;
+  z-index: 1000;
+}
+
+.thumbnail .caption h3 {
+  margin: 0;
+  color: #006064;
+  font-size: 40px;
+  letter-spacing: -3px;
 }
 
 .panel-default>.panel-heading {
