@@ -19,12 +19,18 @@ body {
 }
 
 h1 {
-  font-size: 100px;
+  font-size: 90px;
   font-family: "Slackey";
   position: absolute;
   top: 7.5vh;
-  left: 7.5vw;
+  left: 11vw;
   color: white;
+}
+
+#login h1, #register h1 {
+  -webkit-animation-duration: 1.4s;
+  -webkit-animation-delay: 1s;
+  -webkit-animation-iteration-count: infinite;
 }
 
 h2 {

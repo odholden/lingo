@@ -1,0 +1,11 @@
+.panel {
+  margin: 20px 20px 0 20px;
+  border-radius: 0;
+  border: 2px solid #0097A7;
+}
+
+.panel-default>.panel-heading {
+  background-color: #0097A7;
+  color: white;
+  border-radius: 0;
+}
