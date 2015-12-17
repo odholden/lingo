@@ -103,7 +103,7 @@ user2.save(function(err, user) {
 
 var message1 = new Message({
   user: user1,
-  text: "this is a test message to see if the database is behaving"
+  text: "Hello how are you today?"
 })
 
 message1.save(function(err, message) {
@@ -113,7 +113,7 @@ message1.save(function(err, message) {
 
 var message2 = new Message({
   user: user2,
-  text: "this is another test message to see if the database is behaving"
+  text: "I'm absolutely marvellous thanks so much for asking"
 })
 
 message2.save(function(err, message) {
@@ -121,9 +121,30 @@ message2.save(function(err, message) {
   console.log("Message saved! ", message);
 })
 
+var message3 = new Message({
+  user: user2,
+  text: "Well that's wonderful to hear my friend, how is Hamburg this time of year?"
+})
+
+message3.save(function(err, message) {
+  if (err) return console.log(err);
+  console.log("Message saved! ", message);
+})
+
+var message4 = new Message({
+  user: user2,
+  text: "Es ist ok aber das Wetter ist sehr schlecht."
+})
+
+message4.save(function(err, message) {
+  if (err) return console.log(err);
+  console.log("Message saved! ", message);
+})
+
 var chat1 = new Chat({
   users:  [user1, user2],
-  messages: [message1, message2]
+  messages: [message1, message2, message3, message4],
+  languages: [language1, language3]
 })
 
 chat1.save(function(err, chat) {
@@ -133,7 +154,8 @@ chat1.save(function(err, chat) {
 
 var chat2 = new Chat({
   users:  [user1],
-  messages: [message1, message2]
+  messages: [message1, message2],
+  languages: [language4]
 })
 
 chat2.save(function(err, chat) {
@@ -143,7 +165,8 @@ chat2.save(function(err, chat) {
 
 var chat3 = new Chat({
   users:  [user2],
-  messages: [message1, message2]
+  messages: [message1, message2],
+  languages: [language5]
 })
 
 chat3.save(function(err, chat) {

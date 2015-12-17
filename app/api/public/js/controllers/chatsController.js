@@ -40,14 +40,22 @@ function ChatsController(User, Chat, TokenService, $state, $stateParams, Current
   }
 
   self.showChat = function(chat) {
-    $state.go('chat', { chat: chat });  
-    self.chat = chat;  
-    Chat.get({})
+    $state.go('chat', { chat: chat }); 
+    self.chat = $stateParams.chat;
+    console.log(self.chat);  
+    Chat.get({id: chat._id}, function(chat) {
+      for (var i = 0; i < chat.messages; i++) {
+        $('#messages').append($('<li>').text(chat.messages[i].text));
+        console.log(chat.messages[i].text)
+      };
+    })
   }
 
   self.sendMessage = function(text) {
     self.messageText = text;
     self.chat = $stateParams.chat;
+    console.log(self.chat);  
+
     self.user = TokenService.decodeToken();
     data = {
       message: 
@@ -66,9 +74,10 @@ function ChatsController(User, Chat, TokenService, $state, $stateParams, Current
   }
 
   socket.on("connect", function(){
+    self.user = TokenService.decodeToken();
     console.log("connected")
     socket.on('chat message', function(msg){
-      $('#messages').append($('<li>').text(msg));
+      $('#messages').append("<li>" + self.user + ": " + msg + "</li>");
       console.log("ooooh message received from back " + msg)
     });
   })

@@ -12,3 +12,7 @@ nav {
   background-color: grey;
   box-shadow: none;
 }
+
+#chat {
+  overflow-y: auto;
+}
