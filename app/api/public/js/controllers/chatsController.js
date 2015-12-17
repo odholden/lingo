@@ -14,6 +14,7 @@ function ChatsController(User, Chat, TokenService, $state, $stateParams, Current
   self.invites = [];
   self.chat    = self.chat || {};
   self.messageText = "";
+  self.translateText = "";
 
   self.getChats = function() {
     Chat.query(function(chats) {
@@ -73,11 +74,16 @@ function ChatsController(User, Chat, TokenService, $state, $stateParams, Current
     })
   }
 
+  self.translate = function(text) {
+    self.translateText = text;
+    
+  }
+
   socket.on("connect", function(){
     self.user = TokenService.decodeToken();
     console.log("connected")
     socket.on('chat message', function(msg){
-      $('#messages').append("<li>" + self.user + ": " + msg + "</li>");
+      $('#messages').append("<li>Ben | " + msg + "</li>");
       console.log("ooooh message received from back " + msg)
     });
   })
