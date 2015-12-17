@@ -1,6 +1,5 @@
 <section id="home" ng-controller="ChatsController as chats">
-  <h2>Chats</h2>
-
+  <h2>Conversations</h2>
   <div class="panel panel-default" ng-repeat="chat in chats.all.chats" ng-click="chats.showChat(chat)" ng-if="chats.checkHome(chat)">
     <div class="panel-heading">
       <h3 class="panel-title">Me and {{chat.users[1].local.username}}</h3>

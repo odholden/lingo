@@ -5,14 +5,74 @@ html {
 body {
   max-width: 960px;
   margin: 0 auto;
-  background-image: url('../images/tile-background.jpg')
+  background-color: #0097A7;
+  color: white;
+  position: relative;
 }
 
-nav {
-  background-color: grey;
+h1, h2, h3, h4, h5 {
+  color: white
+}
+
+h1 {
+  font-size: 100px;
+  font-family: "Slackey";
+  position: absolute;
+  top: 7.5vh;
+  left: 7.5vw;
+}
+
+form {
+  width: 100%;
+  height: 250px;
+  top: 32vh;
+  position: absolute;
+}
+
+form input, .ng-message-error p {
+  width: 50vw;
+  margin: 30px 25vw 0 25vw;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+  font-family: "Slackey";
+  color: white;
+  font-size: 20px;
+}
+
+.ng-message-error p {
+  width: 100vw;
+  border: none;
+  margin: 10px 20vw 0 20vw;
+}
+
+button {
+  width: 26vw;
+  height: 26vw;
+  margin: 30px 37vw 0 37vw;
+  background: transparent;
+  border: 5px solid white;
+  border-radius: 50%;
+  font-family: "Slackey";
+  font-size: 26px;
+
+}
+
+::-webkit-input-placeholder {
+  text-align: center;
+  color: white;
+}
+
+.navbar-default {
+  background-color: transparent;
   box-shadow: none;
+  border-top: 5px solid white;
 }
 
 #chat {
   overflow-y: auto;
+}
+
+.container h2 {
+  margin: 20px;
 }
