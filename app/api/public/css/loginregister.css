@@ -121,10 +121,6 @@ h2 {
   border-top: 5px solid white;
 }
 
-#chat {
-  overflow-y: auto;
-}
-
 .container h2 {
   margin:10px 20px;
   color: white;

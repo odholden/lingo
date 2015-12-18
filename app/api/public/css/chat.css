@@ -1,0 +1,15 @@
+#chat {
+  width: 100vw;
+  height: 100vh;
+}
+
+#messages {
+  border: 1px solid black;
+  width: 100vw;
+  overflow-y: auto; 
+  padding-left: 10px;
+}
+
+#chat .footer {
+  bottom: 70px;
+}

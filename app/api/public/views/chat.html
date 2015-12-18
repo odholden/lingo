@@ -1,7 +1,15 @@
 <section id="chat" ng-controller="ChatsController as chats">
   <h2>Chat with Ben</h2>
   <ul id="messages">
-    <li ng-repeat="message in chats.chat.messages">{{message.user.local.username}} | {{ message.text }}</li>
+    <li class="media" ng-repeat="message in chats.chat.messages">
+      <div class="media-left">
+        <img class="media-object" src="http://hassifier.herokuapp.com/ben" width="75" height="100">
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">{{message.user.local.username}}</h4>
+        <p>{{ message.text }}</p>
+      </div>
+    </li>
   </ul>
   <div class="footer">
     <form ng-submit="chats.sendMessage(chats.messageText)">
@@ -17,3 +25,6 @@
 
 </section>
 
+<div class="media">
+
+</div>

@@ -13,6 +13,7 @@ function ChatsController(User, Chat, TokenService, $state, $stateParams, Current
   self.user    = CurrentUser.getUser();
   self.invites = [];
   self.chat    = self.chat || {};
+  self.messages = {};
   self.messageText = "";
   self.translateText = "";
 
@@ -21,16 +22,6 @@ function ChatsController(User, Chat, TokenService, $state, $stateParams, Current
       return self.all = chats;
     })
   }
-
-  // self.getInvites = function(chats) {
-  //   Chat.query(function(chats) {
-  //     for (var i = 0; i < chats.length; i++) {
-  //       if (chats[i].users.length = 1) {
-  //         self.invites.push(chats[i]);
-  //       }
-  //     }
-  //   })
-  // }
 
   self.checkHome = function(chat) {
     if (chat.users.length === 2) return true;
@@ -41,15 +32,19 @@ function ChatsController(User, Chat, TokenService, $state, $stateParams, Current
   }
 
   self.showChat = function(chat) {
-    $state.go('chat', { chat: chat }); 
-    self.chat = $stateParams.chat;
-    console.log(self.chat);  
-    Chat.get({id: chat._id}, function(chat) {
-      for (var i = 0; i < chat.messages; i++) {
-        $('#messages').append($('<li>').text(chat.messages[i].text));
-        console.log(chat.messages[i].text)
-      };
-    })
+    self.messages = chat.messages;
+    $state.go('chat', { chat: chat });
+    self.appendChat(self.messages);
+  }
+
+  self.appendChat = function(messages) {
+    // for (var i = 0; i < messages.length; i++) {
+    //   var text = messages[i].text;
+    //   var name = messages[i].user[0].local.username;
+    //   var image = messages[i].user[0].local.image;
+    //   $('#messages').append("<li>WHY ARENT YOU WORKING</li>");
+    //   console.log(name)
+    // }
   }
 
   self.sendMessage = function(text) {
@@ -76,14 +71,14 @@ function ChatsController(User, Chat, TokenService, $state, $stateParams, Current
 
   self.translate = function(text) {
     self.translateText = text;
-    
+
   }
 
   socket.on("connect", function(){
     self.user = TokenService.decodeToken();
     console.log("connected")
     socket.on('chat message', function(msg){
-      $('#messages').append("<li>Ben | " + msg + "</li>");
+      $('#messages').append("<li class='media' ng-repeat='message in chats.chat.messages'><div class='media-left'><img class='media-object' src='http://hassifier.herokuapp.com/ben' width='75' height='100'></div><div class='media-body'><h4 class='media-heading'>" + "Ollie Holden" + "</h4><p>"+ msg +"</p></div></li>");
       console.log("ooooh message received from back " + msg)
     });
   })

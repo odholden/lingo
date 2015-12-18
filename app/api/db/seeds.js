@@ -77,7 +77,8 @@ var user1 = new User({
   local: {
     username:     "ollie",
     email:        "ollie@ollie.com",
-    password:     "password"
+    password:     "password",
+    image: "http://hassifier.herokuapp.com/ollie"
   },
   languages: [language3, language1]
 })
@@ -91,7 +92,9 @@ var user2 = new User({
   local: {
     username:     "ben",
     email:        "ben@ben.com",
-    password:     "password"
+    password:     "password",
+    image: "http://hassifier.herokuapp.com/ben"
+
   },
   languages: [language1, language3]
 })
