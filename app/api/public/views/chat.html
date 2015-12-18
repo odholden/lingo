@@ -1,16 +1,19 @@
 <section id="chat" ng-controller="ChatsController as chats">
-    <ul id="messages">
-      <li ng-repeat="message in chats.chat.messages">{{message.user.local.username}} | {{ message.text }}</li>
-    </ul>
+  <h2>Chat with Ben</h2>
+  <ul id="messages">
+    <li ng-repeat="message in chats.chat.messages">{{message.user.local.username}} | {{ message.text }}</li>
+  </ul>
+  <div class="footer">
     <form ng-submit="chats.sendMessage(chats.messageText)">
       <input id="m" autocomplete="off" ng-model="chats.messageText" /><button>Send</button>      
     </form>
-    <form ng-submit="chats.translate(chats.translateText)">
-      <input id="t" ng-model="chats.translateText"><button>Translate</button>
+    <form ng-submit="chats.translate(chats.messageText)">
+      <button>Translate</button>
     </form>
-    <br>
-    <br>
-    <br>
-    <br>
+    <form ng-submit="chats.record()">
+      <button>Record</button>
+    </form>
+  </div>
+
 </section>
 
