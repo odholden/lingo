@@ -2,9 +2,9 @@ angular
   .module("lingo")
   .controller("ChatsController", ChatsController);
 
-ChatsController.$inject = ['User', 'Chat', 'TokenService', '$state', "$stateParams", 'CurrentUser', 'socket'];
+ChatsController.$inject = ['User', 'Chat', 'TokenService', '$state', "$stateParams", 'CurrentUser', 'socket', 'translate', 'Translate'];
 
-function ChatsController(User, Chat, TokenService, $state, $stateParams, CurrentUser, socket) {
+function ChatsController(User, Chat, TokenService, $state, $stateParams, CurrentUser, socket, translate, Translate) {
 
   var self = this;
 
@@ -71,6 +71,11 @@ function ChatsController(User, Chat, TokenService, $state, $stateParams, Current
 
   self.translate = function(text) {
     self.translateText = text;
+    var params = translate.getParams(text);
+    console.log(params);
+    Translate.get(function(translation) {
+      console.log(translation);
+    })
 
   }
 

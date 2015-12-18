@@ -4,6 +4,16 @@ angular
 
 TranslateFactory.$inject = ["yandex"];
 
-  function TranslateFactory(yandex, ) {
+function TranslateFactory(yandex) {
+
+  return {
+    getParams: function(text) {
+      return {
+        "key" : yandex,
+        "text": text,
+        "lang": "en-de"
+      }
+    }
+  }
 
 };
