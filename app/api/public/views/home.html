@@ -1,28 +1,62 @@
 <section id="home" ng-controller="ChatsController as chats">
   <h2>Conversations</h2>
-<!--   <div class="media" ng-repeat="chat in chats.all.chats" ng-click="chats.showChat(chat)" ng-if="chats.checkHome(chat)">
-    <div class="media-body">
-      <h4 class="media-heading">Ben Layer</h4>
-      <p> {{ chat.languages[0].name }}<br>
-          {{ chat.languages[1].name }}</p>
-    </div>
-    <div class="media-left media-middle">
-      <img class="media-object" src="http://hassifier.herokuapp.com/ben" height="100" width="75">
-    </div>
-  </div> -->
 
   <div class="row">
-    <div class="col-sm-6 col-md-4">
-      <div class="thumbnail">
+      <div class="thumbnail" ng-repeat="chat in chats.all.chats" ng-click="chats.showChat(chat)" ng-if="chats.checkHome(chat)">
         <img src="http://hassifier.herokuapp.com/ben">
         <div class="caption">
           <h3>Ben Layer</h3>
+          <p> {{ chat.languages[0].name }}
+              {{ chat.languages[1].name }}
+        </div>
+      </div>
+
+      <div class="thumbnail">
+        <img src="http://hassifier.herokuapp.com/guus">
+        <div class="caption">
+          <h3>Guus VOP</h3>
+          <p> {{ chat.languages[0].name }}
+              {{ chat.languages[1].name }}
+        </div>
+      </div>
+
+      <div class="thumbnail">
+        <img src="http://hassifier.herokuapp.com/marty">
+        <div class="caption">
+          <h3>Marty Gormley</h3>
+          <p> {{ chat.languages[0].name }}
+              {{ chat.languages[1].name }}
+        </div>
+      </div>
+
+      <div class="thumbnail">
+        <img src="http://hassifier.herokuapp.com/sarah">
+        <div class="caption">
+          <h3>Sareh Heidari</h3>
           <p> {{ chat.languages[0].name }}<br>
               {{ chat.languages[1].name }}
         </div>
       </div>
-    </div>
+
+      <div class="thumbnail">
+        <img src="http://hassifier.herokuapp.com/marika">
+        <div class="caption">
+          <h3>Marika Devan</h3>
+          <p> {{ chat.languages[0].name }}<br>
+              {{ chat.languages[1].name }}
+        </div>
+      </div>
+
+      <div class="thumbnail">
+        <img src="http://hassifier.herokuapp.com/jake">
+        <div class="caption">
+          <h3>Jake WF</h3>
+          <p> {{ chat.languages[0].name }}<br>
+              {{ chat.languages[1].name }}
+        </div>
+      </div>
   </div>
+
 </section>
 
 

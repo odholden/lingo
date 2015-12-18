@@ -10,6 +10,7 @@ body {
   background-color: white;
   color: black;
   position: relative;
+  padding-bottom: 70px;
 }
 
 #login, #register {

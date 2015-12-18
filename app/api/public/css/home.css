@@ -5,17 +5,20 @@
   z-index: -2;
 }
 
+.row {
+  margin: 0;
+}
 
 .thumbnail {
-  width: 46vw;
-  height: 46vw;
+  width: 47vw;
+  height: 47vw;
   border-radius: 0;
-  border: 2px solid #0097A7;
+  border: 2px solid black;
   display: inline-block;
   position: relative;
-  margin: 2vw;
   background: none;
   overflow: hidden;
+  margin: 1.2vw;
 }
 
 .thumbnail img {
@@ -32,16 +35,18 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: transparent;
-  height: 70px;
+  background-color: rgba(255,255,255,0.6);
+  height: 60px;
   z-index: 1000;
 }
 
 .thumbnail .caption h3 {
   margin: 0;
-  color: #006064;
-  font-size: 40px;
-  letter-spacing: -3px;
+  color: black;
+  font-size: 25px;
+  letter-spacing: -2px;
+  display: inline-block;
+  text-align: center;
 }
 
 .panel-default>.panel-heading {
