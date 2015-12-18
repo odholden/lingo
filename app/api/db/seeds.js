@@ -146,7 +146,7 @@ message4.save(function(err, message) {
 
 var chat1 = new Chat({
   users:  [user1, user2],
-  messages: [message1, message2, message3, message4],
+  messages: [],
   languages: [language1, language3]
 })
 

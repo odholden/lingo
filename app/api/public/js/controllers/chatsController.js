@@ -2,9 +2,9 @@ angular
   .module("lingo")
   .controller("ChatsController", ChatsController);
 
-ChatsController.$inject = ['User', 'Chat', 'TokenService', '$state', "$stateParams", 'CurrentUser', 'socket', 'translate', 'Translate'];
+ChatsController.$inject = ['User', 'Chat', 'TokenService', '$state', "$stateParams", 'CurrentUser', 'socket', 'translate', 'Translate', "$http", "yandex"];
 
-function ChatsController(User, Chat, TokenService, $state, $stateParams, CurrentUser, socket, translate, Translate) {
+function ChatsController(User, Chat, TokenService, $state, $stateParams, CurrentUser, socket, translate, Translate, $http, yandex) {
 
   var self = this;
 
@@ -80,9 +80,22 @@ function ChatsController(User, Chat, TokenService, $state, $stateParams, Current
     self.translateText = text;
     var params = translate.getParams(text);
     console.log(params);
-    Translate.get(function(translation) {
-      console.log(translation);
-    })
+    $http({
+        url: "https://translate.yandex.net/api/v1.5/tr.json/translate",
+        method: "GET",
+        params: { 
+          "key": yandex,
+          "text": text,
+          "lang": "en-de"
+                }
+    }).then(function(res) {
+      console.log(res.data.text[0]);
+      self.messageText = res.data.text[0];
+    });
+
+    // $http.get("/url/to/resource/", {params:{"param1": val1, "param2": val2}})
+    //    .then(/* */)
+
   }
 
   socket.on("connect", function(){

@@ -21,9 +21,45 @@
 }
 
 #chat .footer {
-  bottom: 9vh;
+  bottom: 12vh;
   position: fixed;
   width: 100vw;
   height: 15vh;
   background-color: white;
+}
+
+#chat .footer input {
+  width: 100vw;
+  height: 40px;
+  border: 2px solid #263238;
+  margin-bottom: 10px;
+  vertical-align: top;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+#chat .footer form button {
+  display: inline-block;
+  border: none;
+  border-radius: 50%;
+  background-color: #607D8B;
+  color: white;
+  height: 10vh;
+  width: 10vh;
+}
+
+#send {
+  position: absolute;
+  left: 3vw;
+  bottom: -2vh;
+}
+
+#translate {
+  position: absolute;
+  left: 40vw
+}
+
+#record {
+  position: absolute;
+  left: 80vw
 }

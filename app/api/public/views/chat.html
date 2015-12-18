@@ -13,13 +13,13 @@
   </ul>
   <div class="footer">
     <form ng-submit="chats.sendMessage(chats.messageText)">
-      <input id="m" autocomplete="off" ng-model="chats.messageText" /><button>Send</button>      
+      <input id="m" autocomplete="off" ng-model="chats.messageText" placeholder="type message here to send or translate" /><button id="send">Send</button>      
     </form>
     <form ng-submit="chats.translate(chats.messageText)">
-      <button>Translate</button>
+      <button id="translate">Translate</button>
     </form>
     <form ng-submit="chats.record()">
-      <button>Record</button>
+      <button id="record">Record</button>
     </form>
   </div>
 
