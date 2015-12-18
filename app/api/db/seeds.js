@@ -125,7 +125,7 @@ message2.save(function(err, message) {
 })
 
 var message3 = new Message({
-  user: user2,
+  user: user1,
   text: "Well that's wonderful to hear my friend, how is Hamburg this time of year?"
 })
 

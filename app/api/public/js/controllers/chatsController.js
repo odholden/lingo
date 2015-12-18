@@ -63,7 +63,7 @@ function ChatsController(User, Chat, TokenService, $state, $stateParams, Current
     }
 
     Chat.update({ id: self.chat._id }, data, function(message) {
-      socket.emit('chat message', self.messageText);
+      socket.emit('chat message', data.message);
       self.messageText = "";
       return false
     })
@@ -75,11 +75,19 @@ function ChatsController(User, Chat, TokenService, $state, $stateParams, Current
   }
 
   socket.on("connect", function(){
-    self.user = TokenService.decodeToken();
+    self.user = {
+      local : {
+        username: "Rob",
+        email: "rob@rob.com",
+        image: "http://hassifier.herokuapp.com/rob"
+      }
+    }
     console.log("connected")
-    socket.on('chat message', function(msg){
-      $('#messages').append("<li class='media' ng-repeat='message in chats.chat.messages'><div class='media-left'><img class='media-object' src='http://hassifier.herokuapp.com/ben' width='75' height='100'></div><div class='media-body'><h4 class='media-heading'>" + "Ollie Holden" + "</h4><p>"+ msg +"</p></div></li>");
-      console.log("ooooh message received from back " + msg)
+    console.log(self.user)
+    socket.on('chat message', function(message){
+      console.log(message);
+      $('#messages').append("<li class='media' ng-repeat='message in chats.chat.messages'><div class='media-left'><img class='media-object' src='"+ self.user.local.image+"' width='75' height='100'></div><div class='media-body'><h4 class='media-heading'>" + self.user.local.username + "</h4><p>"+ message.text +"</p></div></li>");
+      console.log("ooooh message received from back " + message)
     });
   })
 

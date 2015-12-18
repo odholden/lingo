@@ -3,7 +3,7 @@
   <ul id="messages">
     <li class="media" ng-repeat="message in chats.chat.messages">
       <div class="media-left">
-        <img class="media-object" src="http://hassifier.herokuapp.com/ben" width="75" height="100">
+        <img class="media-object" ng-src="message.user.local.image" width="75" height="100">
       </div>
       <div class="media-body">
         <h4 class="media-heading">{{message.user.local.username}}</h4>

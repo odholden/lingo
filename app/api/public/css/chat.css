@@ -1,15 +1,29 @@
 #chat {
   width: 100vw;
   height: 100vh;
+  position: relative;
 }
 
 #messages {
-  border: 1px solid black;
   width: 100vw;
+  height: 75vh;
   overflow-y: auto; 
+  padding-left: 0;
+}
+
+.media {
+  margin-top: 0;
+  border-bottom: 2px solid #263238;
+}
+
+.media-left {
   padding-left: 10px;
 }
 
 #chat .footer {
-  bottom: 70px;
+  bottom: 9vh;
+  position: fixed;
+  width: 100vw;
+  height: 15vh;
+  background-color: white;
 }
