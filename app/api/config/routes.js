@@ -24,6 +24,7 @@ router.route('/chats')
 
 router.route('/chats/:id')
   .get(chatsController.chatsShow)
+  .patch(chatsController.chatsAddUser)
   .put(chatsController.chatsAddMessage)
 
 

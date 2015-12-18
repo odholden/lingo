@@ -48,8 +48,13 @@ function chatsAddMessage(req, res) {
   })
 }
 
+function chatsAddUser(req, res) {
+  console.log(req)
+}
+
 module.exports = {
   chatsShow: chatsShow,
   chatsIndex: chatsIndex,
-  chatsAddMessage: chatsAddMessage
+  chatsAddMessage: chatsAddMessage,
+  chatsAddUser: chatsAddUser
 }

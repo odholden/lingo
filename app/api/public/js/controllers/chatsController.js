@@ -69,6 +69,13 @@ function ChatsController(User, Chat, TokenService, $state, $stateParams, Current
     })
   }
 
+  self.addChatToUserPage = function(chat) {
+    self.user = TokenService.decodeToken();
+    data = self.user;
+    chat.users.push(self.user)
+    Chat.update({id: chat._id}, data, function(chat) {})
+  }
+
   self.translate = function(text) {
     self.translateText = text;
     var params = translate.getParams(text);
@@ -76,7 +83,6 @@ function ChatsController(User, Chat, TokenService, $state, $stateParams, Current
     Translate.get(function(translation) {
       console.log(translation);
     })
-
   }
 
   socket.on("connect", function(){

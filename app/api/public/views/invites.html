@@ -2,7 +2,7 @@
   <h2>Invites</h2>
 
   <div class="row">
-      <div class="thumbnail" ng-repeat="chat in chats.all.chats" ng-click="chats.addUserToChat(chats.user)" ng-if="chats.checkInvites(chat)">
+      <div class="thumbnail" ng-repeat="chat in chats.all.chats" ng-click="chats.addChatToUserPage(chat)" ng-if="chats.checkInvites(chat)">
         <img ng-src="{{chat.users[0].local.image}}">
         <div class="caption">
           <h3>{{chat.users[0].local.username}}</h3>
