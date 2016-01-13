@@ -14,7 +14,7 @@ body {
 }
 
 #login, #register {
-  background-color: #607D8B;
+  background-color: #9575CD;
   width: 100vw;
   height: 100vh
 }
@@ -35,19 +35,19 @@ h1 {
 }
 
 h2 {
-  background-color: #607D8B;
+  background-color: #9575CD;
   color: white;
   padding: 10px 0;
   margin: 0;
   text-align: center;
   letter-spacing: -1px;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 #login h2, #register h2 {
   text-align: center;
   letter-spacing: -2px;
-  background-color: #607D8B;
+  background-color: #9575CD;
   padding: 20px 0;
   margin-top: 0;
 
@@ -93,8 +93,8 @@ h2 {
   letter-spacing: -1px;
   font-weight: bold;
   background: white;
-  border: 2px solid #607D8B;
-  color: #607D8B;
+  border: 2px solid #9575CD;
+  color: #9575CD;
 }
 
 #login button:hover, #register button:hover {
@@ -116,12 +116,12 @@ h2 {
 }
 
 .navbar-default {
-  background-color: #607D8B;
+  background-color: #9575CD;
   box-shadow: none;
 }
 
 .container h2 {
-  margin:10px 20px;
+  margin:10px 30px;
   color: white;
   padding: 0;
 }

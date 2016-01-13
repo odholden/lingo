@@ -1,5 +1,5 @@
 <section id="chat" ng-controller="ChatsController as chats">
-  <h2>Chat with Ben</h2>
+  <h2>Ben Layer</h2>
   <ul id="messages">
     <li class="media" ng-repeat="message in chats.chat.messages">
       <div class="media-left">
@@ -17,9 +17,6 @@
     </form>
     <form ng-submit="chats.translate(chats.messageText)">
       <button id="translate">Translate</button>
-    </form>
-    <form ng-submit="chats.record()">
-      <button id="record">Record</button>
     </form>
   </div>
 

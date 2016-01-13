@@ -31,18 +31,19 @@
 #chat .footer input {
   width: 100vw;
   height: 40px;
-  border: 2px solid #263238;
+  border: 2px solid #9575CD;
   margin-bottom: 10px;
   vertical-align: top;
   font-size: 20px;
   line-height: 20px;
+  overflow-x: none;
 }
 
 #chat .footer form button {
   display: inline-block;
   border: none;
   border-radius: 50%;
-  background-color: #607D8B;
+  background-color: #9575CD;
   color: white;
   height: 10vh;
   width: 10vh;

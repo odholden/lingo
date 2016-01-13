@@ -78,7 +78,7 @@ var user1 = new User({
     username:     "ollie",
     email:        "ollie@ollie.com",
     password:     "password",
-    image: "http://hassifier.herokuapp.com/ollie"
+    image: "http://lorempixel.com/people/401/401/"
   },
   languages: [language3, language1]
 })
@@ -93,7 +93,7 @@ var user2 = new User({
     username:     "ben",
     email:        "ben@ben.com",
     password:     "password",
-    image: "http://hassifier.herokuapp.com/ben"
+    image: "http://lorempixel.com/people/402/402/"
 
   },
   languages: [language1, language3]
