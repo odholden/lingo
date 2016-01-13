@@ -20,19 +20,28 @@
   padding-left: 10px;
 }
 
+.media-object {
+  height: 40px;
+  width: 40px;
+}
+
 #chat .footer {
-  bottom: 12vh;
+  bottom: 5vh;
   position: fixed;
   width: 100vw;
-  height: 15vh;
-  background-color: white;
+  height: 25vh;
+  background-color: #EEEEEE;
+}
+
+.footer form:nth-child(1) {
+  border-top: 2px solid #9575CD;
 }
 
 #chat .footer input {
-  width: 100vw;
+  width: 90vw;
   height: 40px;
   border: 2px solid #9575CD;
-  margin-bottom: 10px;
+  margin: 3vh 5vw;
   vertical-align: top;
   font-size: 20px;
   line-height: 20px;
@@ -42,22 +51,22 @@
 #chat .footer form button {
   display: inline-block;
   border: none;
-  border-radius: 50%;
   background-color: #9575CD;
   color: white;
-  height: 10vh;
-  width: 10vh;
+  height: 6vh;
+  width: 25vh;
 }
 
 #send {
   position: absolute;
-  left: 3vw;
-  bottom: -2vh;
+  left: 8vw;
+  bottom: 6vh;
 }
 
 #translate {
   position: absolute;
-  left: 40vw
+  left: 55vw;
+  bottom: 6vh;
 }
 
 #record {
